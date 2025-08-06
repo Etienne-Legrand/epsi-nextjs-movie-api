@@ -2,6 +2,10 @@
 
 Ce projet est une API développée avec Next.js qui permet de gérer une liste de films ainsi que les commentaires associés aux films.
 
+## Prérequis
+1. Node.js 18+
+2. Base de données MongoDB avec la base d'exemple sample_mflix.
+
 ## Installation
 
 1. Clonez ce dépôt sur votre machine locale.

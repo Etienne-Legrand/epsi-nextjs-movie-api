@@ -28,26 +28,74 @@ const Movies = () => {
   }, []);
 
   if (loading) {
-    return <div>Chargement...</div>;
+    return (
+      <div className="min-h-screen bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
+        <div className="flex items-center space-x-3">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <span className="text-lg font-medium text-gray-800 dark:text-gray-200">Chargement...</span>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return (
+      <div className="min-h-screen bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
+        <div className="text-center p-8 rounded-xl bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900 max-w-md mx-4">
+          <div className="text-red-500 text-4xl mb-4">⚠️</div>
+          <p className="text-gray-800 dark:text-gray-200">{error}</p>
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="bg-gray-200 dark:bg-gray-800">
-      <h1 className="text-3xl font-bold text-center text-gray-800 dark:text-gray-200 py-16">
-        50 films aléatoires
-      </h1>
-      <div className="flex flex-wrap justify-center mx-10">
-        {movies.map((movie: Movie) => (
-          <div key={movie._id} className="m-2">
-            <Link href={`/movie/${movie._id}`}>
+    <div className="min-h-screen bg-gray-200 dark:bg-gray-800">
+      <div className="container mx-auto px-6 py-16">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-950 dark:text-white mb-4">
+            Collection de Films
+          </h1>
+          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+            Découvrez notre sélection de 50 films aléatoires avec leurs détails et notes IMDB
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
+          {movies.map((movie: Movie) => (
+            <Link 
+              key={movie._id} 
+              href={`/movie/${movie._id}`}
+              className="transition-transform duration-200 hover:scale-105"
+            >
               <MovieCard movie={movie} />
             </Link>
-          </div>
-        ))}
+          ))}
+        </div>
+        
+        <div className="text-center mt-16">
+          <Link 
+            href="/"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900 text-gray-950 dark:text-white rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 font-medium"
+          >
+            <svg 
+              width="20" 
+              height="20" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                d="M19 12H5M12 19L5 12L12 5" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+            </svg>
+            Retour à l'accueil
+          </Link>
+        </div>
       </div>
     </div>
   );
