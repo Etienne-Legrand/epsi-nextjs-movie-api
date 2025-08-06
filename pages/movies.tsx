@@ -58,7 +58,7 @@ const Movies = () => {
             Collection de Films
           </h1>
           <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            Découvrez notre sélection de 50 films aléatoires avec leurs détails et notes IMDB
+            Découvrez notre sélection de 50 films aléatoires
           </p>
         </div>
         
