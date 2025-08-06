@@ -5,7 +5,7 @@ export default interface Movie {
   runtime: number;
   cast: string[];
   num_mflix_comments: number;
-  poster: string;
+  poster?: string;
   title: string;
   fullplot: string;
   languages: string[];

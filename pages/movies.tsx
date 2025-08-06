@@ -3,6 +3,7 @@ import axios from "axios";
 import MovieCard from "@/components/MovieCard";
 import Movie from "@/types/interfaces/Movie";
 import Link from "next/link";
+import { LoadingIcon, ArrowLeftIcon } from "@/components/icons";
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -31,7 +32,7 @@ const Movies = () => {
     return (
       <div className="min-h-screen bg-gray-200 dark:bg-gray-800 flex items-center justify-center">
         <div className="flex items-center space-x-3">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+          <LoadingIcon />
           <span className="text-lg font-medium text-gray-800 dark:text-gray-200">Chargement...</span>
         </div>
       </div>
@@ -78,21 +79,7 @@ const Movies = () => {
             href="/"
             className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 dark:border-gray-800 dark:bg-gray-900 text-gray-950 dark:text-white rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200 font-medium"
           >
-            <svg 
-              width="20" 
-              height="20" 
-              viewBox="0 0 24 24" 
-              fill="none" 
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path 
-                d="M19 12H5M12 19L5 12L12 5" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round"
-              />
-            </svg>
+            <ArrowLeftIcon />
             Retour à l'accueil
           </Link>
         </div>
