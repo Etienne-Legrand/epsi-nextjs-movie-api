@@ -4,7 +4,7 @@ import Comment from "@/types/interfaces/Comment";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import { LoadingIcon, ArrowLeftIcon, StarIcon } from "@/components/icons";
+import { LoadingIcon, ArrowLeftIcon, StarIcon, ImageIcon } from "@/components/icons";
 
 export default function MovieDetail() {
   const router = useRouter();
@@ -13,6 +13,11 @@ export default function MovieDetail() {
   const [comments, setComments] = useState([] as Comment[]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -72,7 +77,7 @@ export default function MovieDetail() {
 
   return (
     <div className="min-h-screen bg-gray-200 dark:bg-gray-800">
-      <div className="container mx-auto px-6 py-8">
+      <div className="container mx-auto px-6 py-8 max-w-7xl">
         {/* Bouton retour */}
         <Link
           href="/movies"
@@ -87,11 +92,18 @@ export default function MovieDetail() {
           {/* Image du film */}
           <div className="lg:col-span-1">
             <div className="sticky top-8">
-              <img 
-                src={movie?.poster} 
-                alt={movie?.title} 
-                className="w-full max-w-md mx-auto rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
-              />
+              {movie?.poster && !imageError ? (
+                <img 
+                  src={movie.poster} 
+                  alt={movie.title} 
+                  className="w-full max-w-md mx-auto rounded-xl shadow-lg border border-gray-200 dark:border-gray-700"
+                  onError={handleImageError}
+                />
+              ) : (
+                <div className="w-full max-w-md mx-auto h-[540px] rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-800 flex flex-col items-center justify-center text-gray-500 dark:text-gray-400">
+                  <ImageIcon width={64} height={64} className="mb-4 text-gray-400 dark:text-gray-500" />
+                </div>
+              )}
             </div>
           </div>
 
