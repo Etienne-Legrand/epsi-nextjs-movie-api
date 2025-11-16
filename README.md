@@ -5,7 +5,8 @@ Ce projet est une API développée avec Next.js qui permet de gérer une liste d
 https://github.com/user-attachments/assets/b641445d-564e-4e17-a86c-15c214450ec5
 
 ## Prérequis
-1. Node.js 18+
+
+1. Node.js 20+
 2. Base de données MongoDB avec la base d'exemple sample_mflix.
 
 ## Installation
